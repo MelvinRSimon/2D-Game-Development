@@ -31,5 +31,20 @@ public class PlayerController : MonoBehaviour
             scale.x = Mathf.Abs(scale.x);
         }
         transform.localScale = scale;
+
+        float ud = Input.GetAxisRaw("Vertical");
+        if (ud > 0)
+        {
+            animator.SetBool("Jump", true);
+        }
+        else if (ud < 0)
+        {
+            animator.SetBool("Crouch", true);
+        }
+        else
+        {
+            animator.SetBool("Jump", false);
+            animator.SetBool("Crouch", false);
+        }
     }
 }
